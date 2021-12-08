@@ -6,13 +6,17 @@ from .models import team
 def home(request):
     teams = team.objects.all()
     data = {
-        "teams": teams
+        "teams": teams,
     }
     return render(request, 'pages/home.html', data)
 
 
 def about(request):
-    return render(request, 'pages/about.html')
+    teams = team.objects.all()
+    data = {
+        "teams": teams,
+    }
+    return render(request, 'pages/about.html', data)
 
 
 def services(request):
