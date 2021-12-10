@@ -13,7 +13,7 @@ class TeamAdmin(admin.ModelAdmin):
     list_display = ('id', 'thubnail', 'first_name', 'last_name',
                     'designation', 'created_date',)
 
-    list_display_link = ('id', 'thubnail', 'first_name',)
+    list_display_links = ('id', 'thubnail', 'first_name',)
     search_fields = ('first_name', 'last_name', 'designation',)
     list_filter = ('designation',)
 
