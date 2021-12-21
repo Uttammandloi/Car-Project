@@ -1,5 +1,5 @@
 {% extends 'pages/base.html' %}
-
+{% block title %} | Login {% endblock %}
 {% block content %}
 {% load static %}
 
@@ -11,7 +11,7 @@
         <div class="breadcrumb-areas">
             <h1>Login To Your Account</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="active">Login</li>
             </ul>
         </div>
@@ -31,14 +31,16 @@
                         </a>
                     </div>
                     <h3>Sign into your account</h3>
-                    <form action="#" method="GET">
+                    {% include 'includes/messages.html' %}
+                    <form action="{% url 'login' %}" method="POST">
+                      {% csrf_token %}
                         <div class="form-group form-box">
-                            <input type="email" name="email" class="input-text" placeholder="Email Address" required>
+                            <input type="text" name="username" class="input-text" placeholder="Username" required>
                             <i class="flaticon-mail"></i>
                         </div>
                         <div class="form-group form-box">
-                            <input type="password" name="Password" class="input-text" placeholder="Password" required>
-                            <i class="flaticon-lock"></i>
+                            <input type="password" name="password" class="input-text" placeholder="Password" required>
+                            <i class="flaticon-lock"></i>   
                         </div>
                         <div class="form-group mb-0 clearfix">
                             <button type="submit" class="btn-md btn-theme float-left">Login</button>
@@ -52,7 +54,7 @@
                             <li><a href="#" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
                         </ul>
                     </form>
-                    <p>Don't have an account? <a href="signup.html" class="thembo"> Register here</a></p>
+                    <p>Don't have an account? <a href="{% url 'register' %}" class="thembo"> Register here</a></p>
                 </div>
             </div>
         </div>
@@ -62,7 +64,7 @@
 
 <!-- Full Page Search -->
 <div id="full-page-search">
-    <button type="button" class="close">×</button>
+    <button type="button" class="close"></button>
     <form action="https://storage.googleapis.com/theme-vessel/carhouse/index.html#" class="search-header">
         <input type="search" value="" placeholder="type keyword(s) here" />
         <button type="submit" class="btn btn-sm button-theme">Search</button>

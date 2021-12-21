@@ -46,6 +46,15 @@ INSTALLED_APPS = [
     'ckeditor',
     'multiselectfield',
     'django.contrib.humanize',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'contact.apps.ContactConfig',
+    
+    # our providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     
 ]
 
@@ -142,3 +151,13 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# This is the messeges of the
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    
+}
+
+SITE_ID = 1

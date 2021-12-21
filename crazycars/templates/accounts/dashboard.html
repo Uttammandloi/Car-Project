@@ -1,1 +1,69 @@
-<h1>This is the dashboard template</h1>
+{% extends 'pages/base.html' %}
+
+{% block title %} | Dashboard {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">{{user.first_name}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+
+<!--   Dashboard Start   -->
+
+<div class="container mt-50 mb-50">
+	<div class="main-title" style="text-align:left !important;">
+            <h1>Welcome <span>{{user.first_name}}</span></h1>
+            <p>Here are the cars that you have inquired about</p>
+        </div>
+		{% if inquaries %}
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Car Name</th>
+					<th scope="col">Location</th>
+					<th scope="col">Price</th>
+					<th scope="col">Action</th>
+				</tr>
+				</thead>
+				<tbody>
+				{% for inquery in inquaries %}
+					<tr>
+						<th scope="row">1</th>
+						<td>{{inquery.car_title}}</td>
+						<td>{{inquery.city}}</td>
+						<td>{{inquery.phone}}</td>
+						<td><a href="{% url 'car_detail' inquery.car_id %}" class="btn btn-outline-dark">View Car</a></td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<th scope="row">2</th>
+					<td>Lamborgini Huracan</td>
+					<td>Austin</td>
+					<td>$25000</td>
+					<td><a href="#" class="btn btn-outline-dark">View Car</a></td>
+				</tr>
+				
+				</tbody>
+			</table>
+
+		 {% else %}
+		    <h4>You have no inquries</h4>
+		{% endif %}
+	
+</div>
+
+<!--   Dashboard End   -->
+
+{% endblock %}
